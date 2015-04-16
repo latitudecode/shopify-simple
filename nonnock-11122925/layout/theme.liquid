@@ -124,6 +124,7 @@
     <div class="container upper">
       <!--START SIDEBAR-->
       <div class="three columns product-search-wrapper">
+        <!-- removed to place in socials 
         <div id="product-search">
           <form action="/search" method="get" class="search-form" role="search">
             <input type="hidden" name="type" value="product" />
@@ -132,10 +133,25 @@
           </form>
           <br class="clear">
         </div>
+      -->
+
+      <!-- placed in new socials spot -->
+        <div id="social">
+          {% if settings.facebook_url != blank %}<a href="{{ settings.facebook_url }}" target="_blank" class="facebook {% if settings.light_social_icons %}light{% endif %}"></a>{% endif %}
+          {% if settings.twitter_url != blank  %}<a href="{{ settings.twitter_url }}" target="_blank" class="twitter {% if settings.light_social_icons %}light{% endif %}"></a>{% endif %}
+          {% if settings.instagram_url != blank  %}<a href="{{ settings.instagram_url }}" target="_blank" class="instagram {% if settings.light_social_icons %}light{% endif %}"></a>{% endif %}
+          {% if settings.pinterest_url != blank  %}<a href="{{ settings.pinterest_url }}" target="_blank" class="pinterest {% if settings.light_social_icons %}light{% endif %}"></a>{% endif %}
+          {% if settings.youtube_url != blank  %}<a href="{{ settings.youtube_url }}" target="_blank" class="youtube {% if settings.light_social_icons %}light{% endif %}"></a>{% endif %}
+          {% if settings.vimeo_url != blank  %}<a href="{{ settings.vimeo_url }}" target="_blank" class="vimeo {% if settings.light_social_icons %}light{% endif %}"></a>{% endif %}
+          {% if settings.flickr_url != blank  %}<a href="{{ settings.flickr_url }}" target="_blank" class="flickr {% if settings.light_social_icons %}light{% endif %}"></a>{% endif %}
+          {% if settings.show_rss == true %}<a href="/blogs/{{ settings.main_blog }}.atom" target="_blank" class="rss {% if settings.light_social_icons %}light{% endif %}"></a>{% endif %}
+        </div>
+      <!-- end new socials spot -->
       </div>
       <!--END SIDEBAR-->
       <!--START TOP NAV-->
-      <div class="seven columns offset-by-one desktop">
+      <div class="six columns offset-by-one desktop">
+       <!-- removed to place by cart 
         <nav>
           {% for link in linklists[settings.secondary_menu].links %}
           <a href="{{ link.url }}">{{ link.title }}</a>
@@ -152,11 +168,28 @@
             {% endif %}
           {% endif %}
         </nav>
+        -->
       </div>
       <!--END TOP NAV-->
       <!--START MINICART-->
-      <div class="five columns minicart-wrapper">
+      <div class="six columns minicart-wrapper">
         <div id="minicart">
+         
+            {% for link in linklists[settings.secondary_menu].links %}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+            {% endfor %}
+            {% if shop.customer_accounts_enabled %}
+              {% if customer %}
+                <a href="/account">{{ 'customer.account.your_account' | t }}</a> 
+                {{ 'customer.account.log_out' | t | customer_logout_link }}
+              {% else %}
+                {{ 'customer.account.log_in' | t | customer_login_link }} 
+                {% if shop.customer_accounts_optional %}
+                  {{ 'customer.account.create_account' | t | customer_register_link }}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+       
           <a href="#" class="toggle-drawer cart desktop {% if settings.light_cart_icon %}light{% endif %}">{{ 'layout.general.header_cart_title' | t }}<span id="cart-target-desktop" class="count cart-target"> ({{ cart.item_count }})</span></a>
           <a href="/cart" class="cart mobile {% if settings.light_cart_icon %}light{% endif %} cart-target">{{ 'layout.general.header_cart_title' | t }}<span id="cart-target-mobile" class="count cart-target"> ({{ cart.item_count }})</span></a>
           <a href="/cart" class="checkout">{{ 'layout.general.header_checkout_text' | t }}</a>
@@ -169,7 +202,7 @@
     <!--START CONTAINER-->
     <div class="container lower">
       <div class="sixteen columns">
-        <div class="table logo-tagline">
+        <div class="table logo-tagline center">
           <div class="table-cell">
             <h1 id="logo">
               <a href="/">
@@ -181,7 +214,7 @@
               </a>
             </h1>
           </div>
-
+          <!-- removed table temporarlily to place in full width logo
           <div class="table-cell">
             <div id="tagline" class="desktop">
               <h3>
@@ -194,7 +227,7 @@
               {% endif %}
               </h3>
             </div>
-          </div>
+          </div>  --> <!-- here -->
         </div>
       </div>
     </div>
@@ -247,6 +280,7 @@
             {% endif %}
           {% endif %}
         </ul>
+        <!-- moved socials to the top navigation 
         <div id="social">
           {% if settings.facebook_url != blank %}<a href="{{ settings.facebook_url }}" target="_blank" class="facebook {% if settings.light_social_icons %}light{% endif %}"></a>{% endif %}
           {% if settings.twitter_url != blank  %}<a href="{{ settings.twitter_url }}" target="_blank" class="twitter {% if settings.light_social_icons %}light{% endif %}"></a>{% endif %}
@@ -257,6 +291,7 @@
           {% if settings.flickr_url != blank  %}<a href="{{ settings.flickr_url }}" target="_blank" class="flickr {% if settings.light_social_icons %}light{% endif %}"></a>{% endif %}
           {% if settings.show_rss == true %}<a href="/blogs/{{ settings.main_blog }}.atom" target="_blank" class="rss {% if settings.light_social_icons %}light{% endif %}"></a>{% endif %}
         </div>
+        -->
       </nav>
     </div>
     <!--END SIDEBAR-->
