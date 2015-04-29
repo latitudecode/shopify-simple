@@ -1,5 +1,7 @@
 {% paginate collection.products by 48 %}
+{% comment %}
 {% include 'breadcrumb' %}
+{% endcomment %}
 {% if settings.show_sort_by and collection.products_count > 1 %}
   {% include 'collection-sort' %}
 {% endif %}

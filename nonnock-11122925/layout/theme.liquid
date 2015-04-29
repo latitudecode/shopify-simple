@@ -175,7 +175,8 @@
       <div class="six columns minicart-wrapper">
         <div id="minicart">
          
-            {% for link in linklists[settings.secondary_menu].links %}
+           <!-- 
+           {% for link in linklists[settings.secondary_menu].links %}
             <a href="{{ link.url }}">{{ link.title }}</a>
             {% endfor %}
             {% if shop.customer_accounts_enabled %}
@@ -189,6 +190,7 @@
                 {% endif %}
               {% endif %}
             {% endif %}
+          -->
        
           <a href="#" class="toggle-drawer cart desktop {% if settings.light_cart_icon %}light{% endif %}">{{ 'layout.general.header_cart_title' | t }}<span id="cart-target-desktop" class="count cart-target"> ({{ cart.item_count }})</span></a>
           <a href="/cart" class="cart mobile {% if settings.light_cart_icon %}light{% endif %} cart-target">{{ 'layout.general.header_cart_title' | t }}<span id="cart-target-mobile" class="count cart-target"> ({{ cart.item_count }})</span></a>
@@ -307,22 +309,35 @@
     <!--START FOOTER-->
     <footer>
       <section class="upper">
+        <!-- instagram -->
+            <!-- SnapWidget -->
+          <div class="no-link" style="pointer-events: none;">
+            <script src="http://snapwidget.com/js/snapwidget.js"></script>
+            <div class="no-link">
+            <iframe src="http://snapwidget.com/in/?u=bW9sbHlfc2hhaGVlbnxpbnwxMjV8NnwxfHxub3w1fG5vbmV8b25TdGFydHxub3x5ZXM=&ve=290415" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%;"></iframe>
+            </div>
+          </div>
+      <!-- end instgram -->
+      </section>
+      <section class="upper">
 
         <!--START NAV-->
         <div class="three columns ">
+          <!-- 
           <nav>
             {% if settings.secondary_menu != blank %}
-	            <h2>{{ 'layout.footer.footer_menu_title' | t }}</h2>
+	            <h2>{{ 'layout.footer.footer_menu_title' | t }} </h2>
 	            {% for link in linklists[settings.secondary_menu].links %}
 	              <a href="{{ link.url }}">{{ link.title }}</a> {% unless forloop.last %}<br>{% endunless %}
 	            {% endfor %}
             {% endif %}
           </nav>
+          -->
         </div>
         <!--END NAV-->
 
         <!--START PAGE CONTENT-->
-        <div class="eight offset-by-one columns">
+        <div class="five offset-by-one columns">
           <div id="footer-content">
             {% if settings.footer_page == blank %}
             {% else %}
@@ -335,7 +350,7 @@
         <!--END PAGE CONTENT-->
 
         <!--START MAILING LIST / OR CREDIT CARDS-->
-        <div class="three columns offset-by-one">
+        <div class="six columns offset-by-one">
           {% if settings.show_signup_form %}
           <div id="mailing-list">
             <h2>{{ 'layout.footer.mailing_list_title' | t }}</h2>
